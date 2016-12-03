@@ -103,7 +103,9 @@ public class Leitura {
 			respiracao = normalize(sc.nextLine());
 			
 			a = criarAnimal(habitat, revestimento, locomocao, reproducao, alimentacao, respiracao);
+			Result r = new Result();
 			kSession.insert(a);
+			kSession.insert(r);
 	    	kSession.fireAllRules();
 		}
 	}

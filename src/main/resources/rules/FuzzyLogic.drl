@@ -1,0 +1,291 @@
+//created on: Dec 3, 2016
+package rules
+
+import com.bioclassifier.Animal;
+import com.bioclassifier.Result;
+
+
+//------------- HABITAT -------------
+rule "Terrestre"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getHabitat("terrestre") )
+        r : Result()
+    then
+        r.countVote(Result.Grupo.ANFIBIO);
+        r.countVote(Result.Grupo.REPTEIS);
+        r.countVote(Result.Grupo.AVES);
+        r.countVote(Result.Grupo.MAMIFERO);
+        
+end
+
+
+//REGRA NAO FAZ DIFERENCA
+rule "Aquatico"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getHabitat("aquatico") )
+        r : Result()
+    then
+        r.countVote(Result.Grupo.PEIXE);
+        r.countVote(Result.Grupo.ANFIBIO);
+        r.countVote(Result.Grupo.REPTEIS);
+        r.countVote(Result.Grupo.AVES);
+        r.countVote(Result.Grupo.MAMIFERO);   
+end
+
+rule "Aereo"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getHabitat("aereo") )
+        r : Result()
+    then
+    	r.countVote(Result.Grupo.AVES);
+        r.countVote(Result.Grupo.MAMIFERO);
+        
+end
+
+//------------- RESPIRACAO -------------
+rule "Bronquial"
+no-loop true
+	salience 250
+
+    when
+        a : Animal( getRespiracao("bronquial") )
+        r : Result()
+    then
+        a.setGrupo("Peixes");
+end
+
+rule "Cutanea"
+no-loop true
+	salience 250
+
+    when
+        a : Animal( getRespiracao("bronquial") )
+        r : Result()
+    then
+        a.setGrupo("Anfibio");
+end
+
+rule "Pulmonar"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getRespiracao("pulmonar") )
+        r : Result()
+    then
+    	r.countVote(Result.Grupo.ANFIBIO);
+    	r.countVote(Result.Grupo.REPTEIS);
+    	r.countVote(Result.Grupo.AVES);
+        r.countVote(Result.Grupo.MAMIFERO);
+end
+
+//------------- LOCOMOCAO -------------
+rule "Voar"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getLocomocao("voar") )
+        r : Result()
+    then
+    	r.countVote(Result.Grupo.AVES);
+        r.countVote(Result.Grupo.MAMIFERO);
+end
+
+rule "Andar"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getLocomocao("andar") )
+        r : Result()
+    then
+    	r.countVote(Result.Grupo.ANFIBIO);
+    	r.countVote(Result.Grupo.REPTEIS);
+    	r.countVote(Result.Grupo.AVES);
+        r.countVote(Result.Grupo.MAMIFERO);
+end
+
+//Regra nao faz diferenca
+rule "Nadar"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getLocomocao("nadar") )
+        r : Result()
+    then
+        r.countVote(Result.Grupo.PEIXE);
+        r.countVote(Result.Grupo.ANFIBIO);
+        r.countVote(Result.Grupo.REPTEIS);
+        r.countVote(Result.Grupo.AVES);
+        r.countVote(Result.Grupo.MAMIFERO); 
+end
+
+rule "Rastejar"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getLocomocao("rastejar") )
+        r : Result()
+    then
+        r.countVote(Result.Grupo.ANFIBIO);
+        r.countVote(Result.Grupo.REPTEIS);
+end
+
+//------------- REVESTIMENTO -------------
+rule "Penas"
+	no-loop true
+	salience 250
+
+    when
+        a : Animal( getRevestimento("penas") )
+    then
+        a.setGrupo("Aves");
+end
+
+rule "Pelo"
+	no-loop true
+	salience 250
+
+    when
+        a : Animal( getRevestimento("pelo") )
+    then
+        a.setGrupo("Mamífero");
+end
+
+rule "Escamas"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getRevestimento("escamas") )
+        r : Result()
+    then
+        r.countVote(Result.Grupo.PEIXE);
+        r.countVote(Result.Grupo.REPTEIS);
+end
+
+rule "Pele"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getRevestimento("pele") )
+        r : Result()
+    then
+        r.countVote(Result.Grupo.ANFIBIO);
+        r.countVote(Result.Grupo.MAMIFERO);
+end
+
+rule "Carapaca"
+	no-loop true
+	salience 250
+
+    when
+        a : Animal( getRevestimento("carapaca") )
+        r : Result()
+    then
+        a.setGrupo("Repteis");
+end
+
+rule "Cartilagem"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getRevestimento("cartilagem") )
+        r : Result()
+    then
+        r.countVote(Result.Grupo.PEIXE);
+        r.countVote(Result.Grupo.REPTEIS);
+end
+
+//------------- REPRODUCAO -------------
+rule "Viviparo"
+	no-loop true
+	salience 250
+
+    when
+        a : Animal( getReproducao("viviparo") )
+    then
+        a.setGrupo("Mamífero");
+end
+
+rule "Oviparo"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getReproducao("oviparo") )
+        r : Result()
+    then
+        r.countVote(Result.Grupo.ANFIBIO);
+        r.countVote(Result.Grupo.REPTEIS);
+        r.countVote(Result.Grupo.AVES);
+end
+
+rule "ovoliparo"
+	no-loop true
+	salience 220
+
+    when
+        a : Animal( getReproducao("ovoliparo") )
+        r : Result()
+    then
+        r.countVote(Result.Grupo.PEIXE);
+        r.countVote(Result.Grupo.ANFIBIO);
+end
+
+//------------- ALIMENTACAO -------------
+
+rule "Carnivoro"
+	no-loop true
+	salience 220
+	
+	when
+		a : Animal( getAlimentacao("carnivoro") )
+		r : Result()
+	then 
+		r.countVote(Result.Grupo.PEIXE);
+		r.countVote(Result.Grupo.ANFIBIO);
+		r.countVote(Result.Grupo.REPTEIS);
+		r.countVote(Result.Grupo.AVES);
+		r.countVote(Result.Grupo.MAMIFERO);
+end
+
+rule "Herbivoro"
+	no-loop true
+	salience 220
+	
+	when
+		a : Animal( getAlimentacao("herbivoro") )
+		r : Result()
+	then 
+		r.countVote(Result.Grupo.PEIXE);
+		r.countVote(Result.Grupo.REPTEIS);
+		r.countVote(Result.Grupo.AVES);
+		r.countVote(Result.Grupo.MAMIFERO);
+end
+
+rule "Votar"
+	no-loop true
+	salience 200
+	when
+		a : Animal ( grupo != "")
+		r : Result()
+	then
+		r.resultado();
+end
+
+
