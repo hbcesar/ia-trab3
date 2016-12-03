@@ -11,7 +11,6 @@ public class Animal {
 	private List<String> alimentacao = new ArrayList<String>();
 	private List<String> respiracao = new ArrayList<String>();
 	private String grupo;
-//	private List<Integer> possibilidades = new ArrayList<Integer>(listA);
 	
 	public Animal(String habitat, String revestimento, String locomocao, String reproducao, String alimentacao,
 			String respiracao) {
@@ -22,6 +21,10 @@ public class Animal {
 		this.reproducao.add(reproducao);
 		this.alimentacao.add(alimentacao);
 		this.respiracao.add(respiracao);
+	}
+	
+	public Animal(){
+		super();
 	}
 	
 	private boolean verify(String s, List<String> l){
