@@ -9,11 +9,11 @@ public class Main {
 	public static void main(String[] args) {
 		try {
             // load up the knowledge base
-	        KieServices ks = KieServices.Factory.get();
-    	    KieContainer kContainer = ks.getKieClasspathContainer();
-        	KieSession kSession = kContainer.newKieSession("ksession-rules");
+//	        KieServices ks = KieServices.Factory.get();
+//    	    KieContainer kContainer = ks.getKieClasspathContainer();
+//        	KieSession kSession = kContainer.newKieSession("ksession-rules");
 
-        	Leitura.obterDoTeclado(kSession);
+        	Leitura.obterDoTeclado();
         	//Teste.testarElementosTabela(kSession);
             
         } catch (Throwable t) {

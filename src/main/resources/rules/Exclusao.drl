@@ -1,0 +1,175 @@
+//created on: Dec 4, 2016
+package rules
+
+import com.bioclassifier.Animal;
+import com.bioclassifier.Result;
+
+
+//------------- HABITAT -------------
+rule "ETerrestre"
+	no-loop true
+	salience 120
+
+    when
+        a : Animal( getHabitat("terrestre") )
+        r : Result()
+    then
+        r.removePossibility(Result.Grupo.PEIXE);
+end
+
+
+rule "EAereo"
+	no-loop true
+	salience 120
+
+    when
+        a : Animal( getHabitat("aereo") )
+        r : Result()
+    then
+    	r.removePossibility(Result.Grupo.PEIXE);
+    	r.removePossibility(Result.Grupo.ANFIBIO);
+        r.removePossibility(Result.Grupo.REPTEIS);
+        
+end
+
+//------------- RESPIRACAO -------------
+rule "EPulmonar"
+	no-loop true
+	salience 120
+
+    when
+        a : Animal( getRespiracao("pulmonar") )
+        r : Result()
+    then
+    	r.removePossibility(Result.Grupo.PEIXE);
+end
+
+//------------- LOCOMOCAO -------------
+rule "EVoar"
+	no-loop true
+	salience 120
+
+    when
+        a : Animal( getLocomocao("voar") )
+        r : Result()
+    then
+    	r.removePossibility(Result.Grupo.PEIXE);
+        r.removePossibility(Result.Grupo.ANFIBIO);
+        r.removePossibility(Result.Grupo.REPTEIS);
+end
+
+rule "EAndar"
+	no-loop true
+	salience 120
+
+    when
+        a : Animal( getLocomocao("andar") )
+        r : Result()
+    then
+    	r.removePossibility(Result.Grupo.PEIXE);
+end
+
+rule "ERastejar"
+	no-loop true
+	salience 120
+
+    when
+        a : Animal( getLocomocao("rastejar") )
+        r : Result()
+    then
+        r.removePossibility(Result.Grupo.PEIXE);
+        r.removePossibility(Result.Grupo.AVES);
+        r.removePossibility(Result.Grupo.MAMIFERO);
+end
+
+//------------- REVESTIMENTO -------------
+rule "EEscamas"
+	no-loop true
+	salience 120
+
+    when
+        a : Animal( getRevestimento("escamas") )
+        r : Result()
+    then
+    	r.removePossibility(Result.Grupo.ANFIBIO);
+        r.removePossibility(Result.Grupo.AVES);
+        r.removePossibility(Result.Grupo.MAMIFERO);
+end
+
+rule "EPele"
+	no-loop true
+	salience 120
+
+    when
+        a : Animal( getRevestimento("pele") )
+        r : Result()
+    then
+        r.removePossibility(Result.Grupo.PEIXE);
+        r.removePossibility(Result.Grupo.AVES);
+        r.removePossibility(Result.Grupo.REPTEIS);
+end
+
+rule "ECartilagem"
+	no-loop true
+	salience 120
+
+    when
+        a : Animal( getRevestimento("cartilagem") )
+        r : Result()
+    then
+        r.removePossibility(Result.Grupo.ANFIBIO);
+        r.removePossibility(Result.Grupo.AVES);
+        r.removePossibility(Result.Grupo.MAMIFERO);
+end
+
+//------------- REPRODUCAO -------------
+rule "EOviparo"
+	no-loop true
+	salience 120
+
+    when
+        a : Animal( getReproducao("oviparo") )
+        r : Result()
+    then
+        r.removePossibility(Result.Grupo.MAMIFERO);
+        r.removePossibility(Result.Grupo.PEIXE);
+end
+
+rule "Eovoliparo"
+	no-loop true
+	salience 120
+
+    when
+        a : Animal( getReproducao("ovoliparo") )
+        r : Result()
+    then
+        r.removePossibility(Result.Grupo.AVES);
+        r.removePossibility(Result.Grupo.MAMIFERO);
+        r.removePossibility(Result.Grupo.REPTEIS);
+end
+
+//------------- ALIMENTACAO -------------
+rule "EHerbivoro"
+	no-loop true
+	salience 120
+	
+	when
+		a : Animal( getAlimentacao("herbivoro") )
+		r : Result()
+	then 
+		r.removePossibility(Result.Grupo.ANFIBIO);
+end
+
+rule "EVotar"
+	no-loop true
+	salience 100
+	when
+		a : Animal ( grupo != "")
+		r : Result()
+	then
+		r.resultado();
+		update(r);
+		update(a);
+end
+
+

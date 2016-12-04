@@ -1,0 +1,170 @@
+//created on: Dec 4, 2016
+package rules
+
+import com.bioclassifier.Animal;
+import com.bioclassifier.Result;
+
+rule "Salmao"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.PEIXE )
+        a : Animal( !getRevestimento("cartilagem") && getRevestimento("escamas"),
+        			getAlimentacao("carnivoro") && !getAlimentacao("herbivoro")
+        			)
+    then
+        System.out.println("O animal é: Salmao");
+end
+
+rule "Tubarao"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.PEIXE)
+        a : Animal( getRevestimento("cartilagem") && !getRevestimento("escamas"),
+        			getAlimentacao("carnivoro") && !getAlimentacao("herbivoro")
+        			)
+    then
+        System.out.println("O animal é: Tubarao");
+end
+
+rule "Sapo"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.ANFIBIO)
+        a : Animal( !getReproducao("oviparo") && getReproducao("ovoliparo")
+        			)
+    then
+        System.out.println("O animal é: Sapo");
+end
+
+rule "Salamandra"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.ANFIBIO)
+        a : Animal( getReproducao("oviparo") && !getReproducao("ovoliparo")
+        			)
+    then
+        System.out.println("O animal é: Salamandra");
+end
+
+rule "Jacare"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.REPTEIS)
+        a : Animal( getRevestimento("escamas") && !getRevestimento("carapaca"),
+        			getLocomocao("andar") && getLocomocao("nadar") && !getLocomocao("rastejar"),
+        			getAlimentacao("carnivoro") && !getAlimentacao("herbivoro")
+        			)
+    then
+        System.out.println("O animal é: Jacaré");
+end
+
+rule "Cobra"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.REPTEIS)
+        a : Animal( getRevestimento("escamas") && !getRevestimento("carapaca"),
+        			!getLocomocao("andar") && getLocomocao("nadar") && getLocomocao("rastejar"),
+        			getAlimentacao("carnivoro") && !getAlimentacao("herbivoro")
+        			)
+    then
+        System.out.println("O animal é: Cobra");
+end
+
+rule "Tartaruga"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.REPTEIS)
+        a : Animal( getRevestimento("escamas") && getRevestimento("carapaca"),
+        			getLocomocao("andar") && getLocomocao("nadar") && !getLocomocao("rastejar"),
+        			!getAlimentacao("carnivoro") && getAlimentacao("herbivoro")
+        			)
+    then
+        System.out.println("O animal é: Tartaruga");
+end
+
+rule "Pinguim"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.AVES)
+        a : Animal( getHabitat("terrestre") && getHabitat("aquatico") && !getHabitat("aereo"),
+        			getLocomocao("andar") && getLocomocao("nadar") && !getLocomocao("voar"),
+        			!getAlimentacao("carnivoro") && !getAlimentacao("herbivoro")
+        			)
+    then
+        System.out.println("O animal é: Pnguim");
+end
+
+rule "Pato"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.AVES)
+        a : Animal( getHabitat("terrestre") && getHabitat("aquatico") && getHabitat("aereo"),
+        			getLocomocao("andar") && getLocomocao("nadar") && getLocomocao("voar"),
+        			!getAlimentacao("carnivoro") && getAlimentacao("herbivoro")
+        			)
+    then
+        System.out.println("O animal é: Pato");
+end
+
+rule "Galinha"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.AVES)
+        a : Animal( getHabitat("terrestre") && !getHabitat("aquatico") && !getHabitat("aereo"),
+        			getLocomocao("andar") && !getLocomocao("nadar") && getLocomocao("voar"),
+        			!getAlimentacao("carnivoro") && getAlimentacao("herbivoro")
+        			)
+    then
+        System.out.println("O animal é: Galinha");
+end
+
+rule "Macaco"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.MAMIFERO)
+        a : Animal( getHabitat("terrestre") && !getHabitat("aquatico") && !getHabitat("aereo"),
+        			getRevestimento("pele") && getRevestimento("pelo"),
+        			getLocomocao("andar") && !getLocomocao("nadar") && !getLocomocao("voar")
+        			)
+    then
+        System.out.println("O animal é: Macaco");
+end
+
+rule "Baleia"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.MAMIFERO)
+        a : Animal( !getHabitat("terrestre") && getHabitat("aquatico") && !getHabitat("aereo"),
+        			getRevestimento("pele") && !getRevestimento("pelo"),
+        			!getLocomocao("andar") && getLocomocao("nadar") && !getLocomocao("voar")
+        			)
+    then
+        System.out.println("O animal é: Baleia");
+end
+
+rule "Morcego"
+	no-loop true
+	salience 90
+    when
+    	r : Result( decisao == Result.Grupo.MAMIFERO)
+        a : Animal( !getHabitat("terrestre") && !getHabitat("aquatico") && getHabitat("aereo"),
+        			getRevestimento("pele") && !getRevestimento("pelo"),
+        			!getLocomocao("andar") && !getLocomocao("nadar") && getLocomocao("voar")
+        			)
+    then
+        System.out.println("O animal é: Morcego");
+end
+
+

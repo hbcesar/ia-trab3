@@ -3,6 +3,8 @@ package com.bioclassifier;
 import java.text.Normalizer;
 import java.util.Scanner;
 
+import org.kie.api.KieServices;
+import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
 public class Leitura {
@@ -78,7 +80,7 @@ public class Leitura {
 		return a;
 	}
 	
-	public static Animal obterDoTeclado(KieSession kSession){
+	public static Animal obterDoTeclado(){
 		Scanner sc = new Scanner(System.in);
 		String habitat;
 		String revestimento;
@@ -87,8 +89,12 @@ public class Leitura {
 		String alimentacao;
 		String respiracao;
 		Animal a = null;
+		KieServices ks = KieServices.Factory.get();
+	    KieContainer kContainer = ks.getKieClasspathContainer();
+    	KieSession kSession = kContainer.newKieSession("ksession-rules");
 		
 		while(true){
+			System.out.println("----------- Entradas ---------");
 			System.out.print("Habitat: ");
 			habitat = normalize(sc.nextLine());
 			System.out.print("Revestimento: ");
@@ -106,7 +112,11 @@ public class Leitura {
 			Result r = new Result();
 			kSession.insert(a);
 			kSession.insert(r);
+			System.out.println("----------- Resultados ---------");
 	    	kSession.fireAllRules();
+	    	kSession = kContainer.newKieSession("ksession-rules");
+	    	System.out.println("\n\n");
+	    	
 		}
 	}
 }
