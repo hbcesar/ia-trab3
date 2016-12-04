@@ -18,63 +18,49 @@ public class Leitura {
 		return convertedString;
 	}
 	
-	private static void setOption(Animal a, String s, String option){
-		String parts[] = s.split(", ");
-		
-		switch(option){
-		case "habitat":
-			for(String c : parts){
-				a.setHabitat(c);
-			}
-		case "revestimento":
-			for(String c : parts){
-				a.setRevestimento(c);
-			}
-		case "locomocao":
-			for(String c : parts){
-				a.setLocomocao(c);
-			}
-		case "reproducao":
-			for(String c : parts){
-				a.setReproducao(c);
-			}
-		case "alimentacao":
-			for(String c : parts){
-				a.setAlimentacao(c);
-			}
-		case "respiracao":
-			for(String c : parts){
-				a.setRespiracao(c);
-			}
-		}
-		
-	}
-	
 	private static Animal criarAnimal(String habitat, String revestimento, String locomocao, String reproducao, String alimentacao, String respiracao){
 		Animal a = new Animal();
 		
 		if(habitat.length() > 1){
-			setOption(a, habitat, "habitat");
+			String parts[] = habitat.split(", ");
+			for(String c : parts){
+				a.setHabitat(c);
+			}
 		}
 		
 		if(revestimento.length() > 1){
-			setOption(a, revestimento, "revestimento");
+			String parts[] = revestimento.split(", ");
+			for(String c : parts){
+				a.setRevestimento(c);
+			}
 		}
 		
 		if(locomocao.length() > 1){
-			setOption(a, locomocao, "locomocao");
+			String parts[] = locomocao.split(", ");
+			for(String c : parts){
+				a.setLocomocao(c);
+			}
 		}
 		
 		if(reproducao.length() > 1){
-			setOption(a, reproducao, "reproducao");
+			String parts[] = reproducao.split(", ");
+			for(String c : parts){
+				a.setReproducao(c);
+			}
 		}
 		
 		if(alimentacao.length() > 1){
-			setOption(a, alimentacao, "alimentacao");
+			String parts[] = alimentacao.split(", ");
+			for(String c : parts){
+				a.setAlimentacao(c);
+			}
 		}
 		
 		if(respiracao.length() > 1){
-			setOption(a, respiracao, "respiracao");
+			String parts[] = respiracao.split(", ");
+			for(String c : parts){
+				a.setRespiracao(c);
+			}
 		}
 		
 		return a;

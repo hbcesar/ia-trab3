@@ -135,7 +135,7 @@ rule "EOviparo"
         r.removePossibility(Result.Grupo.PEIXE);
 end
 
-rule "Eovoliparo"
+rule "EOvoliparo"
 	no-loop true
 	salience 120
 
