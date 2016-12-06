@@ -21,45 +21,46 @@ public class Leitura {
 	private static Animal criarAnimal(String habitat, String revestimento, String locomocao, String reproducao, String alimentacao, String respiracao){
 		Animal a = new Animal();
 		
+		//Divide as entradas em strings diferentes (caso tenha passado mais do que uma)
 		if(habitat.length() > 1){
 			String parts[] = habitat.split(", ");
 			for(String c : parts){
-				a.setHabitat(c);
+				a.addHabitat(c);
 			}
 		}
 		
 		if(revestimento.length() > 1){
 			String parts[] = revestimento.split(", ");
 			for(String c : parts){
-				a.setRevestimento(c);
+				a.addRevestimento(c);
 			}
 		}
 		
 		if(locomocao.length() > 1){
 			String parts[] = locomocao.split(", ");
 			for(String c : parts){
-				a.setLocomocao(c);
+				a.addLocomocao(c);
 			}
 		}
 		
 		if(reproducao.length() > 1){
 			String parts[] = reproducao.split(", ");
 			for(String c : parts){
-				a.setReproducao(c);
+				a.addReproducao(c);
 			}
 		}
 		
 		if(alimentacao.length() > 1){
 			String parts[] = alimentacao.split(", ");
 			for(String c : parts){
-				a.setAlimentacao(c);
+				a.addAlimentacao(c);
 			}
 		}
 		
 		if(respiracao.length() > 1){
 			String parts[] = respiracao.split(", ");
 			for(String c : parts){
-				a.setRespiracao(c);
+				a.addRespiracao(c);
 			}
 		}
 		
@@ -67,6 +68,7 @@ public class Leitura {
 	}
 	
 	public static Animal obterDoTeclado(){
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		String habitat;
 		String revestimento;
@@ -79,6 +81,7 @@ public class Leitura {
 	    KieContainer kContainer = ks.getKieClasspathContainer();
     	KieSession kSession = kContainer.newKieSession("ksession-rules");
 		
+    	//Fica lendo do teclado em loop
 		while(true){
 			System.out.println("----------- Entradas ---------");
 			System.out.print("Habitat: ");

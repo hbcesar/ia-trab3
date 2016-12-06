@@ -13,14 +13,6 @@ public class Result {
 		PEIXE, ANFIBIO, REPTEIS, AVES, MAMIFERO
 	}
 	
-//	public enum Animais {
-//		SALMAO, TUBARAO,
-//		SAPO, SALAMANDRA,
-//		JACARE, COBRA, TARTARUGA,
-//		PINGUIM, PATO, GALINHA,
-//		MACACO, BALEIA, MORCEGO
-//	}
-	
 	public Grupo getDecisao() {
 		return decisao;
 	}
@@ -75,6 +67,4 @@ public class Result {
 	public void clean() {
 		map.clear();
 	}
-	
-	
 }

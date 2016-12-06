@@ -1,122 +1,178 @@
 package com.bioclassifier;
 
+import org.kie.api.KieServices;
+import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
 public class Teste {
-	public static void testarElementosTabela(KieSession kSession){
+	public static void testarElementosTabela(){
+        KieServices ks = KieServices.Factory.get();
+	    KieContainer kContainer = ks.getKieClasspathContainer();
+    	KieSession kSession = kContainer.newKieSession("ksession-rules");
+		
 		Animal peixe = new Animal("aquatico", "escamas", "nadar", "ovoliparo", "carnivoro", "bronquial");
-    	peixe.setAlimentacao("herbivoro");
-    	peixe.setRevestimento("cartilagem");
+    	peixe.addAlimentacao("herbivoro");
+    	peixe.addRevestimento("cartilagem");
+    	kSession.insert(peixe);
+    	Result r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal tubaraosalmao = new Animal("aquatico", "cartilagem", "nadar", "ovoliparo", "carnivoro", "bronquial");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(tubaraosalmao);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal anfibio = new Animal("aquatico", "pele", "andar", "ovoliparo", "carnivoro", "cutanea");
-    	anfibio.setHabitat("terrestre");
-    	anfibio.setLocomocao("rastejar");
-    	anfibio.setLocomocao("nadar");
-    	anfibio.setReproducao("oviparo");
-    	anfibio.setRespiracao("pulmonar");
+    	anfibio.addHabitat("terrestre");
+    	anfibio.addLocomocao("rastejar");
+    	anfibio.addLocomocao("nadar");
+    	anfibio.addReproducao("oviparo");
+    	anfibio.addRespiracao("pulmonar");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(anfibio);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal sapo = new Animal("aquatico", "pele", "andar", "ovoliparo", "carnivoro", "cutanea");
-    	sapo.setHabitat("terrestre");
-    	sapo.setLocomocao("nadar");
+    	sapo.addHabitat("terrestre");
+    	sapo.addLocomocao("nadar");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(sapo);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	
     	Animal salamandra = new Animal("aquatico", "pele", "andar", "oviparo", "carnivoro", "cutanea");
-    	salamandra.setHabitat("terrestre");
-    	salamandra.setLocomocao("nadar");
+    	salamandra.addHabitat("terrestre");
+    	salamandra.addLocomocao("nadar");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(salamandra);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal repteis = new Animal("aquatico", "escamas", "andar", "oviparo", "carnivoro", "pulmonar");
-    	repteis.setHabitat("terrestre");
-    	repteis.setRevestimento("cartilagem");
-    	repteis.setLocomocao("rastejar");
-    	repteis.setLocomocao("nadar");
-    	repteis.setAlimentacao("herbivoro");
+    	repteis.addHabitat("terrestre");
+    	repteis.addRevestimento("cartilagem");
+    	repteis.addLocomocao("rastejar");
+    	repteis.addLocomocao("nadar");
+    	repteis.addAlimentacao("herbivoro");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(repteis);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal jacare = new Animal("aquatico", "escamas", "andar", "oviparo", "carnivoro", "pulmonar");
-    	jacare.setHabitat("terrestre");
-    	jacare.setLocomocao("nadar");
+    	jacare.addHabitat("terrestre");
+    	jacare.addLocomocao("nadar");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(jacare);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
         
     	Animal cobra = new Animal("aquatico", "escamas", "rastejar", "oviparo", "carnivoro", "pulmonar");
-    	cobra.setHabitat("terrestre");
-    	cobra.setLocomocao("nadar");
+    	cobra.addHabitat("terrestre");
+    	cobra.addLocomocao("nadar");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(cobra);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal tartaruga = new Animal("aquatico", "escamas", "andar", "oviparo", "herbivoro", "pulmonar");
-    	tartaruga.setHabitat("terrestre");
-    	tartaruga.setRevestimento("carapaca");
+    	tartaruga.addHabitat("terrestre");
+    	tartaruga.addRevestimento("carapaca");
+    	tartaruga.addLocomocao("nadar");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(tartaruga);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal aves = new Animal("aereo", "penas", "andar", "oviparo", "herbivoro", "pulmonar");
-    	aves.setHabitat("terrestre");
-    	aves.setHabitat("aquatico");
-    	aves.setLocomocao("nadar");
-    	aves.setLocomocao("voar");
-    	aves.setAlimentacao("carnivoro");
+    	aves.addHabitat("terrestre");
+    	aves.addHabitat("aquatico");
+    	aves.addLocomocao("nadar");
+    	aves.addLocomocao("voar");
+    	aves.addAlimentacao("carnivoro");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(aves);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal pinguim = new Animal("terrestre", "penas", "andar", "oviparo", "carnivoro", "pulmonar");
-    	pinguim.setHabitat("aquatico");
-    	pinguim.setLocomocao("nadar");
+    	pinguim.addHabitat("aquatico");
+    	pinguim.addLocomocao("nadar");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(pinguim);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal pato = new Animal("terrestre", "penas", "andar", "oviparo", "herbivoro", "pulmonar");
-    	pato.setHabitat("aquatico");
-    	pato.setHabitat("aereo");
-    	pato.setLocomocao("nadar");
-    	pato.setLocomocao("voar");
+    	pato.addHabitat("aquatico");
+    	pato.addHabitat("aereo");
+    	pato.addLocomocao("nadar");
+    	pato.addLocomocao("voar");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(pato);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal galinha = new Animal("terrestre", "penas", "andar", "oviparo", "herbivoro", "pulmonar");
-    	galinha.setLocomocao("voar");
+    	galinha.addLocomocao("voar");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(galinha);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal mamifero = new Animal("terrestre", "pele", "andar", "viviparo", "herbivoro", "pulmonar");
-    	mamifero.setHabitat("aquatico");
-    	mamifero.setHabitat("aereo");
-    	mamifero.setRevestimento("pelo");
-    	mamifero.setLocomocao("nadar");
-    	mamifero.setLocomocao("voar");
-    	mamifero.setAlimentacao("carnivoro");
+    	mamifero.addHabitat("aquatico");
+    	mamifero.addHabitat("aereo");
+    	mamifero.addRevestimento("pelo");
+    	mamifero.addLocomocao("nadar");
+    	mamifero.addLocomocao("voar");
+    	mamifero.addAlimentacao("carnivoro");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(mamifero);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal macaco = new Animal("terrestre", "pele", "andar", "viviparo", "herbivoro", "pulmonar");
-    	macaco.setRevestimento("pelo");
-    	macaco.setAlimentacao("carnivoro");
+    	macaco.addRevestimento("pelo");
+    	macaco.addAlimentacao("carnivoro");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(macaco);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal baleia = new Animal("aquatico", "pele", "nadar", "viviparo", "herbivoro", "pulmonar");
-    	baleia.setAlimentacao("carnivoro");
+    	baleia.addAlimentacao("carnivoro");
+    	kSession = kContainer.newKieSession("ksession-rules");
+    	kSession.insert(baleia);
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
     	
     	Animal morcego = new Animal("aereo", "pele", "voar", "viviparo", "herbivoro", "pulmonar");
-    	morcego.setAlimentacao("carnivoro");
-    	
-    	kSession.insert(peixe);
-    	kSession.fireAllRules();
-        kSession.insert(tubaraosalmao);
-        kSession.fireAllRules();
-        kSession.insert(anfibio);
-        kSession.fireAllRules();
-        kSession.insert(sapo);
-        kSession.fireAllRules();
-        kSession.insert(salamandra);
-        kSession.fireAllRules();
-        kSession.insert(repteis);
-        kSession.fireAllRules();
-        kSession.insert(jacare);
-        kSession.fireAllRules();
-        kSession.insert(cobra);
-        kSession.fireAllRules();
-        kSession.insert(tartaruga);
-        kSession.fireAllRules();
-    	kSession.insert(aves);
-    	kSession.fireAllRules();
-    	kSession.insert(pinguim);
-    	kSession.fireAllRules();
-    	kSession.insert(pato);
-    	kSession.fireAllRules();
-    	kSession.insert(galinha);
-    	kSession.fireAllRules();
-    	kSession.insert(mamifero);
-    	kSession.fireAllRules();
-    	kSession.insert(macaco);
-    	kSession.fireAllRules();
-    	kSession.insert(baleia);
-    	kSession.fireAllRules();
+    	morcego.addAlimentacao("carnivoro");
+    	kSession = kContainer.newKieSession("ksession-rules");
     	kSession.insert(morcego);
-        kSession.fireAllRules();
+    	r = new Result();
+		kSession.insert(r);
+    	kSession.fireAllRules();
 	}
 
 }

@@ -9,8 +9,8 @@ rule "Salmao"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.PEIXE )
-        a : Animal( !getRevestimento("cartilagem") && getRevestimento("escamas"),
-        			getAlimentacao("carnivoro") && !getAlimentacao("herbivoro")
+        a : Animal( !checkRevestimento("cartilagem") && checkRevestimento("escamas"),
+        			checkAlimentacao("carnivoro") && !checkAlimentacao("herbivoro")
         			)
     then
         System.out.println("O animal é: Salmao");
@@ -21,8 +21,8 @@ rule "Tubarao"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.PEIXE)
-        a : Animal( getRevestimento("cartilagem") && !getRevestimento("escamas"),
-        			getAlimentacao("carnivoro") && !getAlimentacao("herbivoro")
+        a : Animal( checkRevestimento("cartilagem") && !checkRevestimento("escamas"),
+        			checkAlimentacao("carnivoro") && !checkAlimentacao("herbivoro")
         			)
     then
         System.out.println("O animal é: Tubarao");
@@ -33,7 +33,7 @@ rule "Sapo"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.ANFIBIO)
-        a : Animal( !getReproducao("oviparo") && getReproducao("ovoliparo")
+        a : Animal( !checkReproducao("oviparo") && checkReproducao("ovoliparo")
         			)
     then
         System.out.println("O animal é: Sapo");
@@ -44,7 +44,7 @@ rule "Salamandra"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.ANFIBIO)
-        a : Animal( getReproducao("oviparo") && !getReproducao("ovoliparo")
+        a : Animal( checkReproducao("oviparo") && !checkReproducao("ovoliparo")
         			)
     then
         System.out.println("O animal é: Salamandra");
@@ -55,9 +55,9 @@ rule "Jacare"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.REPTEIS)
-        a : Animal( getRevestimento("escamas") && !getRevestimento("carapaca"),
-        			getLocomocao("andar") && getLocomocao("nadar") && !getLocomocao("rastejar"),
-        			getAlimentacao("carnivoro") && !getAlimentacao("herbivoro")
+        a : Animal( checkRevestimento("escamas") && !checkRevestimento("carapaca"),
+        			checkLocomocao("andar") && checkLocomocao("nadar") && !checkLocomocao("rastejar"),
+        			checkAlimentacao("carnivoro") && !checkAlimentacao("herbivoro")
         			)
     then
         System.out.println("O animal é: Jacaré");
@@ -68,9 +68,9 @@ rule "Cobra"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.REPTEIS)
-        a : Animal( getRevestimento("escamas") && !getRevestimento("carapaca"),
-        			!getLocomocao("andar") && getLocomocao("nadar") && getLocomocao("rastejar"),
-        			getAlimentacao("carnivoro") && !getAlimentacao("herbivoro")
+        a : Animal( checkRevestimento("escamas") && !checkRevestimento("carapaca"),
+        			!checkLocomocao("andar") && checkLocomocao("nadar") && checkLocomocao("rastejar"),
+        			checkAlimentacao("carnivoro") && !checkAlimentacao("herbivoro")
         			)
     then
         System.out.println("O animal é: Cobra");
@@ -81,9 +81,9 @@ rule "Tartaruga"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.REPTEIS)
-        a : Animal( getRevestimento("escamas") && getRevestimento("carapaca"),
-        			getLocomocao("andar") && getLocomocao("nadar") && !getLocomocao("rastejar"),
-        			!getAlimentacao("carnivoro") && getAlimentacao("herbivoro")
+        a : Animal( checkRevestimento("escamas") && checkRevestimento("carapaca"),
+        			checkLocomocao("andar") && checkLocomocao("nadar") && !checkLocomocao("rastejar"),
+        			!checkAlimentacao("carnivoro") && checkAlimentacao("herbivoro")
         			)
     then
         System.out.println("O animal é: Tartaruga");
@@ -94,9 +94,9 @@ rule "Pinguim"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.AVES)
-        a : Animal( getHabitat("terrestre") && getHabitat("aquatico") && !getHabitat("aereo"),
-        			getLocomocao("andar") && getLocomocao("nadar") && !getLocomocao("voar"),
-        			!getAlimentacao("carnivoro") && !getAlimentacao("herbivoro")
+        a : Animal( checkHabitat("terrestre") && checkHabitat("aquatico") && !checkHabitat("aereo"),
+        			checkLocomocao("andar") && checkLocomocao("nadar") && !checkLocomocao("voar"),
+        			checkAlimentacao("carnivoro") && !checkAlimentacao("herbivoro")
         			)
     then
         System.out.println("O animal é: Pnguim");
@@ -107,9 +107,9 @@ rule "Pato"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.AVES)
-        a : Animal( getHabitat("terrestre") && getHabitat("aquatico") && getHabitat("aereo"),
-        			getLocomocao("andar") && getLocomocao("nadar") && getLocomocao("voar"),
-        			!getAlimentacao("carnivoro") && getAlimentacao("herbivoro")
+        a : Animal( checkHabitat("terrestre") && checkHabitat("aquatico") && checkHabitat("aereo"),
+        			checkLocomocao("andar") && checkLocomocao("nadar") && checkLocomocao("voar"),
+        			!checkAlimentacao("carnivoro") && checkAlimentacao("herbivoro")
         			)
     then
         System.out.println("O animal é: Pato");
@@ -120,9 +120,9 @@ rule "Galinha"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.AVES)
-        a : Animal( getHabitat("terrestre") && !getHabitat("aquatico") && !getHabitat("aereo"),
-        			getLocomocao("andar") && !getLocomocao("nadar") && getLocomocao("voar"),
-        			!getAlimentacao("carnivoro") && getAlimentacao("herbivoro")
+        a : Animal( checkHabitat("terrestre") && !checkHabitat("aquatico") && !checkHabitat("aereo"),
+        			checkLocomocao("andar") && !checkLocomocao("nadar") && checkLocomocao("voar"),
+        			!checkAlimentacao("carnivoro") && checkAlimentacao("herbivoro")
         			)
     then
         System.out.println("O animal é: Galinha");
@@ -133,9 +133,9 @@ rule "Macaco"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.MAMIFERO)
-        a : Animal( getHabitat("terrestre") && !getHabitat("aquatico") && !getHabitat("aereo"),
-        			getRevestimento("pele") && getRevestimento("pelo"),
-        			getLocomocao("andar") && !getLocomocao("nadar") && !getLocomocao("voar")
+        a : Animal( checkHabitat("terrestre") && !checkHabitat("aquatico") && !checkHabitat("aereo"),
+        			checkRevestimento("pele") && checkRevestimento("pelo"),
+        			checkLocomocao("andar") && !checkLocomocao("nadar") && !checkLocomocao("voar")
         			)
     then
         System.out.println("O animal é: Macaco");
@@ -146,9 +146,9 @@ rule "Baleia"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.MAMIFERO)
-        a : Animal( !getHabitat("terrestre") && getHabitat("aquatico") && !getHabitat("aereo"),
-        			getRevestimento("pele") && !getRevestimento("pelo"),
-        			!getLocomocao("andar") && getLocomocao("nadar") && !getLocomocao("voar")
+        a : Animal( !checkHabitat("terrestre") && checkHabitat("aquatico") && !checkHabitat("aereo"),
+        			checkRevestimento("pele") && !checkRevestimento("pelo"),
+        			!checkLocomocao("andar") && checkLocomocao("nadar") && !checkLocomocao("voar")
         			)
     then
         System.out.println("O animal é: Baleia");
@@ -159,9 +159,9 @@ rule "Morcego"
 	salience 90
     when
     	r : Result( decisao == Result.Grupo.MAMIFERO)
-        a : Animal( !getHabitat("terrestre") && !getHabitat("aquatico") && getHabitat("aereo"),
-        			getRevestimento("pele") && !getRevestimento("pelo"),
-        			!getLocomocao("andar") && !getLocomocao("nadar") && getLocomocao("voar")
+        a : Animal( !checkHabitat("terrestre") && !checkHabitat("aquatico") && checkHabitat("aereo"),
+        			checkRevestimento("pele") && !checkRevestimento("pelo"),
+        			!checkLocomocao("andar") && !checkLocomocao("nadar") && checkLocomocao("voar")
         			)
     then
         System.out.println("O animal é: Morcego");

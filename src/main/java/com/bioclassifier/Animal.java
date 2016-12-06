@@ -12,6 +12,7 @@ public class Animal {
 	private List<String> respiracao = new ArrayList<String>();
 	private String grupo;
 	
+	//Cria animal adicionando primeiros itens
 	public Animal(String habitat, String revestimento, String locomocao, String reproducao, String alimentacao,
 			String respiracao) {
 		super();
@@ -27,58 +28,50 @@ public class Animal {
 		super();
 	}
 	
-	private boolean verify(String s, List<String> l){
-		for(String r : l){
-			if(r.equals(s)){
-				return true;
-			}
-		}
-		
-		return false;
+	//Todos os metodos abaixo checam se string existe na lista ou adicionam nova string a lista
+	public boolean checkHabitat(String habitat) {
+		return this.habitat.contains(habitat);
 	}
-	
-	public boolean getHabitat(String habitat) {
-		return verify(habitat, this.habitat);
-	}
-	public void setHabitat(String habitat) {
+	public void addHabitat(String habitat) {
 		this.habitat.add(habitat);
 	}
 	
-	public boolean getRevestimento(String revestimento) {
-		return verify(revestimento, this.revestimento);
+	public boolean checkRevestimento(String revestimento) {
+		return this.revestimento.contains(revestimento);
 	}
-	public void setRevestimento(String revestimento) {
+	public void addRevestimento(String revestimento) {
 		this.revestimento.add(revestimento);
 	}
 	
-	public boolean getLocomocao(String locomocao) {
-		return verify(locomocao, this.locomocao);
+	public boolean checkLocomocao(String locomocao) {
+		return this.locomocao.contains(locomocao);
 	}
-	public void setLocomocao(String locomocao) {
+	public void addLocomocao(String locomocao) {
 		this.locomocao.add(locomocao);
 	}
 	
-	public boolean getReproducao(String reproducao) {
-		return verify(reproducao, this.reproducao);
+	public boolean checkReproducao(String reproducao) {
+		return this.reproducao.contains(reproducao);
 	}
-	public void setReproducao(String reproducao) {
+	public void addReproducao(String reproducao) {
 		this.reproducao.add(reproducao);
 	}
 	
-	public boolean getAlimentacao(String alimentacao) {
-		return verify(alimentacao, this.alimentacao);
+	public boolean checkAlimentacao(String alimentacao) {
+		return this.alimentacao.contains(alimentacao);
 	}
-	public void setAlimentacao(String alimentacao) {
+	public void addAlimentacao(String alimentacao) {
 		this.alimentacao.add(alimentacao);
 	}
 	
-	public boolean getRespiracao(String respiracao) {
-		return verify(respiracao, this.respiracao);
+	public boolean checkRespiracao(String respiracao) {
+		return this.respiracao.contains(respiracao);
 	}
-	public void setRespiracao(String respiracao) {
+	public void addRespiracao(String respiracao) {
 		this.respiracao.add(respiracao);
 	}
 
+	//Setters e getters de grupo
 	public String getGrupo() {
 		return grupo;
 	}

@@ -11,7 +11,7 @@ rule "Terrestre"
 	salience 220
 
     when
-        a : Animal( getHabitat("terrestre") )
+        a : Animal( checkHabitat("terrestre") )
         r : Result()
     then
         r.countVote(Result.Grupo.ANFIBIO);
@@ -23,12 +23,12 @@ end
 
 
 //REGRA NAO FAZ DIFERENCA
-rule "Aquatico"
+/* rule "Aquatico"
 	no-loop true
 	salience 220
 
     when
-        a : Animal( getHabitat("aquatico") )
+        a : Animal( checkHabitat("aquatico") )
         r : Result()
     then
         r.countVote(Result.Grupo.PEIXE);
@@ -36,14 +36,14 @@ rule "Aquatico"
         r.countVote(Result.Grupo.REPTEIS);
         r.countVote(Result.Grupo.AVES);
         r.countVote(Result.Grupo.MAMIFERO);   
-end
+end */
 
 rule "Aereo"
 	no-loop true
 	salience 220
 
     when
-        a : Animal( getHabitat("aereo") )
+        a : Animal( checkHabitat("aereo") )
         r : Result()
     then
     	r.countVote(Result.Grupo.AVES);
@@ -57,7 +57,7 @@ no-loop true
 	salience 250
 
     when
-        a : Animal( getRespiracao("bronquial") )
+        a : Animal( checkRespiracao("bronquial") )
         r : Result()
     then
         r.countVote(Result.Grupo.PEIXE);
@@ -68,7 +68,7 @@ no-loop true
 	salience 250
 
     when
-        a : Animal( getRespiracao("cutanea") )
+        a : Animal( checkRespiracao("cutanea") )
         r : Result()
     then
         r.countVote(Result.Grupo.ANFIBIO);
@@ -79,7 +79,7 @@ rule "Pulmonar"
 	salience 220
 
     when
-        a : Animal( getRespiracao("pulmonar") )
+        a : Animal( checkRespiracao("pulmonar") )
         r : Result()
     then
     	r.countVote(Result.Grupo.ANFIBIO);
@@ -94,7 +94,7 @@ rule "Voar"
 	salience 220
 
     when
-        a : Animal( getLocomocao("voar") )
+        a : Animal( checkLocomocao("voar") )
         r : Result()
     then
     	r.countVote(Result.Grupo.AVES);
@@ -106,7 +106,7 @@ rule "Andar"
 	salience 220
 
     when
-        a : Animal( getLocomocao("andar") )
+        a : Animal( checkLocomocao("andar") )
         r : Result()
     then
     	r.countVote(Result.Grupo.ANFIBIO);
@@ -116,12 +116,12 @@ rule "Andar"
 end
 
 //Regra nao faz diferenca
-rule "Nadar"
+/* rule "Nadar"
 	no-loop true
 	salience 220
 
     when
-        a : Animal( getLocomocao("nadar") )
+        a : Animal( checkLocomocao("nadar") )
         r : Result()
     then
         r.countVote(Result.Grupo.PEIXE);
@@ -129,14 +129,14 @@ rule "Nadar"
         r.countVote(Result.Grupo.REPTEIS);
         r.countVote(Result.Grupo.AVES);
         r.countVote(Result.Grupo.MAMIFERO); 
-end
+end */
 
 rule "Rastejar"
 	no-loop true
 	salience 220
 
     when
-        a : Animal( getLocomocao("rastejar") )
+        a : Animal( checkLocomocao("rastejar") )
         r : Result()
     then
         r.countVote(Result.Grupo.ANFIBIO);
@@ -149,7 +149,7 @@ rule "Penas"
 	salience 250
 
     when
-        a : Animal( getRevestimento("penas") )
+        a : Animal( checkRevestimento("penas") )
         r : Result()
     then
         r.countVote(Result.Grupo.AVES);
@@ -160,7 +160,7 @@ rule "Pelo"
 	salience 250
 
     when
-        a : Animal( getRevestimento("pelo") )
+        a : Animal( checkRevestimento("pelo") )
         r : Result()
     then
         r.countVote(Result.Grupo.MAMIFERO);
@@ -171,7 +171,7 @@ rule "Escamas"
 	salience 220
 
     when
-        a : Animal( getRevestimento("escamas") )
+        a : Animal( checkRevestimento("escamas") )
         r : Result()
     then
         r.countVote(Result.Grupo.PEIXE);
@@ -183,7 +183,7 @@ rule "Pele"
 	salience 220
 
     when
-        a : Animal( getRevestimento("pele") )
+        a : Animal( checkRevestimento("pele") )
         r : Result()
     then
         r.countVote(Result.Grupo.ANFIBIO);
@@ -195,7 +195,7 @@ rule "Carapaca"
 	salience 250
 
     when
-        a : Animal( getRevestimento("carapaca") )
+        a : Animal( checkRevestimento("carapaca") )
         r : Result()
     then
         r.countVote(Result.Grupo.REPTEIS);
@@ -206,7 +206,7 @@ rule "Cartilagem"
 	salience 220
 
     when
-        a : Animal( getRevestimento("cartilagem") )
+        a : Animal( checkRevestimento("cartilagem") )
         r : Result()
     then
         r.countVote(Result.Grupo.PEIXE);
@@ -219,7 +219,7 @@ rule "Viviparo"
 	salience 250
 
     when
-        a : Animal( getReproducao("viviparo") )
+        a : Animal( checkReproducao("viviparo") )
         r : Result()
     then
         r.countVote(Result.Grupo.MAMIFERO);
@@ -230,7 +230,7 @@ rule "Oviparo"
 	salience 220
 
     when
-        a : Animal( getReproducao("oviparo") )
+        a : Animal( checkReproducao("oviparo") )
         r : Result()
     then
         r.countVote(Result.Grupo.ANFIBIO);
@@ -243,7 +243,7 @@ rule "ovoliparo"
 	salience 220
 
     when
-        a : Animal( getReproducao("ovoliparo") )
+        a : Animal( checkReproducao("ovoliparo") )
         r : Result()
     then
         r.countVote(Result.Grupo.PEIXE);
@@ -257,7 +257,7 @@ rule "Carnivoro"
 	salience 220
 	
 	when
-		a : Animal( getAlimentacao("carnivoro") )
+		a : Animal( checkAlimentacao("carnivoro") )
 		r : Result()
 	then 
 		r.countVote(Result.Grupo.PEIXE);
@@ -272,7 +272,7 @@ rule "Herbivoro"
 	salience 220
 	
 	when
-		a : Animal( getAlimentacao("herbivoro") )
+		a : Animal( checkAlimentacao("herbivoro") )
 		r : Result()
 	then 
 		r.countVote(Result.Grupo.PEIXE);

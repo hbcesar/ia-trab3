@@ -11,7 +11,7 @@ rule "ETerrestre"
 	salience 120
 
     when
-        a : Animal( getHabitat("terrestre") )
+        a : Animal( checkHabitat("terrestre") )
         r : Result()
     then
         r.removePossibility(Result.Grupo.PEIXE);
@@ -23,7 +23,7 @@ rule "EAereo"
 	salience 120
 
     when
-        a : Animal( getHabitat("aereo") )
+        a : Animal( checkHabitat("aereo") )
         r : Result()
     then
     	r.removePossibility(Result.Grupo.PEIXE);
@@ -38,7 +38,7 @@ rule "EPulmonar"
 	salience 120
 
     when
-        a : Animal( getRespiracao("pulmonar") )
+        a : Animal( checkRespiracao("pulmonar") )
         r : Result()
     then
     	r.removePossibility(Result.Grupo.PEIXE);
@@ -50,7 +50,7 @@ rule "EVoar"
 	salience 120
 
     when
-        a : Animal( getLocomocao("voar") )
+        a : Animal( checkLocomocao("voar") )
         r : Result()
     then
     	r.removePossibility(Result.Grupo.PEIXE);
@@ -63,7 +63,7 @@ rule "EAndar"
 	salience 120
 
     when
-        a : Animal( getLocomocao("andar") )
+        a : Animal( checkLocomocao("andar") )
         r : Result()
     then
     	r.removePossibility(Result.Grupo.PEIXE);
@@ -74,7 +74,7 @@ rule "ERastejar"
 	salience 120
 
     when
-        a : Animal( getLocomocao("rastejar") )
+        a : Animal( checkLocomocao("rastejar") )
         r : Result()
     then
         r.removePossibility(Result.Grupo.PEIXE);
@@ -88,7 +88,7 @@ rule "EEscamas"
 	salience 120
 
     when
-        a : Animal( getRevestimento("escamas") )
+        a : Animal( checkRevestimento("escamas") )
         r : Result()
     then
     	r.removePossibility(Result.Grupo.ANFIBIO);
@@ -101,7 +101,7 @@ rule "EPele"
 	salience 120
 
     when
-        a : Animal( getRevestimento("pele") )
+        a : Animal( checkRevestimento("pele") )
         r : Result()
     then
         r.removePossibility(Result.Grupo.PEIXE);
@@ -114,7 +114,7 @@ rule "ECartilagem"
 	salience 120
 
     when
-        a : Animal( getRevestimento("cartilagem") )
+        a : Animal( checkRevestimento("cartilagem") )
         r : Result()
     then
         r.removePossibility(Result.Grupo.ANFIBIO);
@@ -128,7 +128,7 @@ rule "EOviparo"
 	salience 120
 
     when
-        a : Animal( getReproducao("oviparo") )
+        a : Animal( checkReproducao("oviparo") )
         r : Result()
     then
         r.removePossibility(Result.Grupo.MAMIFERO);
@@ -140,7 +140,7 @@ rule "EOvoliparo"
 	salience 120
 
     when
-        a : Animal( getReproducao("ovoliparo") )
+        a : Animal( checkReproducao("ovoliparo") )
         r : Result()
     then
         r.removePossibility(Result.Grupo.AVES);
@@ -154,7 +154,7 @@ rule "EHerbivoro"
 	salience 120
 	
 	when
-		a : Animal( getAlimentacao("herbivoro") )
+		a : Animal( checkAlimentacao("herbivoro") )
 		r : Result()
 	then 
 		r.removePossibility(Result.Grupo.ANFIBIO);
